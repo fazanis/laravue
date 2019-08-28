@@ -10,7 +10,7 @@
                        <th>URL</th>
                    </tr>
                    <tr v-for="url in urldata">
-                        <td>{{url.title}}</td>
+                        <td>{{url.name}}</td>
                         <td>{{url.url}}</td>
                    </tr>
                </table>
@@ -33,10 +33,10 @@
         },
         methods:{
             update: function () {
-                this.is_refresh = true
+                this.is_refresh = true;
                 axios.get('/getjson').then((response)=>{
-                    this.urldata = response.data
-                    this.is_refresh = false
+                    this.urldata = response.data;
+                    this.is_refresh = false;
                     this.id++
                 });
             }

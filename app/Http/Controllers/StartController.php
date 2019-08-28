@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class StartController extends Controller
@@ -16,6 +17,10 @@ class StartController extends Controller
             [
                 'title'=>'Youtube',
                 'url'=>'https://youtube.com'
+            ],
+            [
+                'title'=>'mail',
+                'url'=>'https://mail.ru'
             ]
         ];
         return view('welcome',[
@@ -27,13 +32,18 @@ class StartController extends Controller
     {
         return [
             [
-                'title'=>'Орлеу',
+                'name'=>'Орлеу',
                 'url'=>'http://orleupvl.kz'
             ],
             [
-                'title'=>'Youtube',
+                'name'=>'Youtube',
                 'url'=>'https://youtube.com'
+            ],
+            [
+                'name'=>'mail',
+                'url'=>'https://mail.ru'
             ]
         ];
+//        return User::all();
     }
 }
