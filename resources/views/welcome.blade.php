@@ -111,7 +111,7 @@
                     </section>
                     <section id="content-tab3">
                         <p>
-                            Здесь размещаете любое содержание....
+                            <ajax-bilets></ajax-bilets>
                         </p>
                     </section>
                     <section id="content-tab4">

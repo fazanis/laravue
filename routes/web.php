@@ -13,4 +13,5 @@
 
 Route::get('/', 'StartController@index');
 Route::get('/getjson', 'StartController@getjson');
+Route::get('/getAjaxBilets', 'StartController@getAjaxBilets');
 

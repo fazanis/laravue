@@ -8,7 +8,7 @@
                        <th>URL</th>
                    </tr>
                    <tr v-for="url in urldata">
-                        <td>{{url.title}}</td>
+                        <td>{{url.name}}</td>
                         <td>{{url.url}}</td>
                    </tr>
                </table>
