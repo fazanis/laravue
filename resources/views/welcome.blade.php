@@ -116,7 +116,7 @@
                     </section>
                     <section id="content-tab4">
                         <p>
-                            Здесь размещаете любое содержание....
+                            <chartline-component></chartline-component>
                         </p>
                     </section>
                 </div>

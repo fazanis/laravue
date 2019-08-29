@@ -24,6 +24,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('one-component', require('./components/OneComponent.vue').default);
 Vue.component('ajax-component', require('./components/AjaxComponent.vue').default);
 Vue.component('ajax-bilets', require('./components/BiletsComponent.vue').default);
+Vue.component('chartline-component', require('./components/ChartLineComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
