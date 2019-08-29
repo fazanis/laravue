@@ -42,11 +42,11 @@ class StartController extends Controller
     public function dataChart()
     {
         return [
-            'labels' =>['март','апрель','май','июнь'],
+            'labels' =>['март','апрель','май','июнь','июль'],
             'datasets' =>array([
                 'label'=> 'Продажи',
                 'backgroundColor' => '#F26202',
-                'data' => ['15000','5000','10000','30000'],
+                'data' => ['15000','5000','10000','30000','3000'],
             ])
         ];
     }
