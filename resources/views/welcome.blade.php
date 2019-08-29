@@ -125,6 +125,7 @@
 
                     <section id="content-tab5">
                         <p>
+                            123
                             <chartpie-component></chartpie-component>
                         </p>
                     </section>
