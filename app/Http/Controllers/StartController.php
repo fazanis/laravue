@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bilets;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -11,15 +12,15 @@ class StartController extends Controller
     {
         $url_data = [
             [
-                'title'=>'Орлеу',
+                'name'=>'Орлеу',
                 'url'=>'http://orleupvl.kz'
                 ],
             [
-                'title'=>'Youtube',
+                'name'=>'Youtube',
                 'url'=>'https://youtube.com'
             ],
             [
-                'title'=>'mail',
+                'name'=>'mail',
                 'url'=>'https://mail.ru'
             ]
         ];
@@ -30,20 +31,11 @@ class StartController extends Controller
 
     public function getjson()
     {
-        return [
-            [
-                'name'=>'Орлеу',
-                'url'=>'http://orleupvl.kz'
-            ],
-            [
-                'name'=>'Youtube',
-                'url'=>'https://youtube.com'
-            ],
-            [
-                'name'=>'mail',
-                'url'=>'https://mail.ru'
-            ]
-        ];
-//        return User::all();
+        return json_encode(User::all());
+    }
+
+    public function getAjaxBilets()
+    {
+        return json_encode(Bilets::all());
     }
 }

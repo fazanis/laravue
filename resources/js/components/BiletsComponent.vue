@@ -2,16 +2,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <button @click="update" class="btn btn-info" v-if="!is_refresh">Обновить - {{id}}</button>
+                <button @click="update" class="btn btn-info" v-if="!is_refresh">Обновить</button>
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
                <table class="table">
                    <tr>
-                       <th>Наименование</th>
-                       <th>URL</th>
+                       <th>id</th>
+                       <th>заголовок</th>
+                       <th>Описание</th>
                    </tr>
                    <tr v-for="url in urldata">
-                        <td>{{url.name}}</td>
-                        <td>{{url.email}}</td>
+                        <td>{{url.id}}</td>
+                        <td>{{url.title}}</td>
+                        <td>{{url.discription}}</td>
                    </tr>
                </table>
             </div>
@@ -34,7 +36,7 @@
         methods:{
             update: function () {
                 this.is_refresh = true;
-                axios.get('/getjson').then((response)=>{
+                axios.get('/getAjaxBilets').then((response)=>{
                     console.log(response);
                     this.urldata = response.data;
                     this.is_refresh = false;

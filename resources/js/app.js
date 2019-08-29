@@ -23,6 +23,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('one-component', require('./components/OneComponent.vue').default);
 Vue.component('ajax-component', require('./components/AjaxComponent.vue').default);
+Vue.component('ajax-bilets', require('./components/BiletsComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

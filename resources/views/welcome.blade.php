@@ -94,7 +94,7 @@
                     <label for="tab2" title="Вкладка 2">Ajax</label>
 
                     <input id="tab3" type="radio" name="tabs">
-                    <label for="tab3" title="Вкладка 3">Вкладка 3</label>
+                    <label for="tab3" title="Вкладка 3">Билеты</label>
 
                     <input id="tab4" type="radio" name="tabs">
                     <label for="tab4" title="Вкладка 4">Вкладка 4</label>
@@ -111,7 +111,7 @@
                     </section>
                     <section id="content-tab3">
                         <p>
-                            Здесь размещаете любое содержание....
+                            <ajax-bilets></ajax-bilets>
                         </p>
                     </section>
                     <section id="content-tab4">
