@@ -4,6 +4,12 @@
             <div class="col-md-12">
                 <button @click="update" class="btn btn-info" v-if="!is_refresh">Обновить</button>
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
+                <form action="">
+                    <input type="text" name="title" id="title">
+                    <input type="text" name="discription" id="discription">
+                    <input type="text" name="text" id="text">
+                    <button class="btn btn-info">Добавить</button>
+                </form>
                <table class="table">
                    <tr>
                        <th>id</th>

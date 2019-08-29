@@ -1778,6 +1778,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37262,11 +37268,13 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
         _c(
           "table",
           { staticClass: "table" },
           [
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
             _vm._l(_vm.urldata, function(url) {
               return _c("tr", [
@@ -37285,6 +37293,22 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("form", { attrs: { action: "" } }, [
+      _c("input", { attrs: { type: "text", name: "title", id: "title" } }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "text", name: "discription", id: "discription" }
+      }),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "text", name: "text", id: "text" } }),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-info" }, [_vm._v("Добавить")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
