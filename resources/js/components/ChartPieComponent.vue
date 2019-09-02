@@ -25,7 +25,6 @@
         methods:{
             update: function () {
                 axios.get('/data-chart').then((response)=>{
-                    console.log(response);
                     this.data = response.data;
                 });
             }

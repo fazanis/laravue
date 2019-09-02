@@ -4,12 +4,10 @@
             <div class="col-md-12">
                 <button @click="update" class="btn btn-info" v-if="!is_refresh">Обновить</button>
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
-                <form action="">
                     <input type="text" name="title" id="title">
                     <input type="text" name="discription" id="discription">
                     <input type="text" name="text" id="text">
-                    <button class="btn btn-info">Добавить</button>
-                </form>
+                    <button @click="addData"  class="btn btn-info" >Добавить</button>
                <table class="table">
                    <tr>
                        <th>id</th>
@@ -33,7 +31,10 @@
             return{
                 urldata:[],
                 is_refresh: false,
-                id:0
+                id:0,
+                title:'',
+                discription: '',
+                text: ''
             }
         },
         mounted() {
@@ -43,10 +44,17 @@
             update: function () {
                 this.is_refresh = true;
                 axios.get('/getAjaxBilets').then((response)=>{
-                    console.log(response);
                     this.urldata = response.data;
                     this.is_refresh = false;
                     this.id++
+                });
+            },
+            addData: function () {
+                axios.post('/addBilet',{
+                    title: this.title,
+                    discription: this.discription,
+                    text: this.text}).then((response)=>{
+                    console.log(response);
                 });
             }
         }

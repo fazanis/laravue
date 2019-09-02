@@ -26,7 +26,6 @@
         methods:{
             update: function () {
                 axios.get('/random-chart').then((response)=>{
-                    console.log(response);
                     this.data = response.data;
                 });
             }

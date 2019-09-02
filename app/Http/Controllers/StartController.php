@@ -39,6 +39,11 @@ class StartController extends Controller
         return json_encode(Bilets::all());
     }
 
+    public function addBilet(Request $request)
+    {
+        return $request->title;
+    }
+
     public function dataChart()
     {
         return [
@@ -47,6 +52,11 @@ class StartController extends Controller
                 'label'=> 'Продажи',
                 'backgroundColor' => '#F26202',
                 'data' => ['15000','5000','10000','30000','3000'],
+            ],
+            [
+                'label'=> 'Продажи',
+                'backgroundColor' => 'red',
+                'data' => ['10000','8000','40000','1000','2000'],
             ])
         ];
     }
