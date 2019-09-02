@@ -102,6 +102,9 @@
                     <input id="tab5" type="radio" name="tabs">
                     <label for="tab5" title="Вкладка 5">Круговая</label>
 
+                    <input id="tab6" type="radio" name="tabs">
+                    <label for="tab6" title="Вкладка 6">Изменяемая</label>
+
                     <section id="content-tab1">
                         <p>
                             <one-component :urldata="{{json_encode($url_data)}}"></one-component>
@@ -125,8 +128,12 @@
 
                     <section id="content-tab5">
                         <p>
-                            123
                             <chartpie-component></chartpie-component>
+                        </p>
+                    </section>
+                    <section id="content-tab6">
+                        <p>
+                            <chartlineupdate-component></chartlineupdate-component>
                         </p>
                     </section>
                 </div>
@@ -214,6 +221,9 @@
         .tabs>label[for*="4"]:before {
             content: "\f13c";
         }
+        .tabs>label[for*="5"]:before {
+            content: "\f13c";
+        }
         /* Изменения стиля переключателей вкладок при наведении */
 
         .tabs>label:hover {
@@ -228,7 +238,8 @@
             background: #fff;
         }
         /* Активация секций с помощью псевдокласса :checked */
-        #tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4 {
+        #tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4
+        ,#tab5:checked~#content-tab5,#tab6:checked~#content-tab6{
             display: block;
         }
         /* Убираем текст с переключателей

@@ -50,4 +50,26 @@ class StartController extends Controller
             ])
         ];
     }
+
+    public function random()
+    {
+        return [
+            'labels' =>['март','апрель','май','июнь','июль'],
+            'datasets' =>array([
+                'label'=> 'Золото',
+                'backgroundColor' => '#F26202',
+                'data' => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000)],
+            ],
+                [
+                    'label'=> 'Серебро',
+                    'backgroundColor' => '#58cc18',
+                    'data' => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000)],
+                ],
+                [
+                    'label'=> 'Лом',
+                    'backgroundColor' => '#16AB39',
+                    'data' => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000)],
+                ])
+        ];
+    }
 }
