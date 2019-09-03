@@ -50,11 +50,19 @@
                 });
             },
             addData: function () {
-                axios.post('/addBilet',{
-                    title: this.title,
-                    discription: this.discription,
-                    text: this.text}).then((response)=>{
-                    console.log(response);
+                // axios({
+                //     method: 'post',
+                //     url: '/addBilet',
+                //     data: title=this.title,
+                //     discription=this.discription,
+                //     text=this.text
+                //     config: { headers: {'Content-Type': 'multipart/form-data' }}
+                // }).then((response)=>{
+                //     console.log(response);
+                // });
+                axios.post('/addBilet').then(function (response) {
+                    app.countries = response.data;
+                    console.log(app.countries);
                 });
             }
         }

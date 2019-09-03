@@ -41,7 +41,7 @@ class StartController extends Controller
 
     public function addBilet(Request $request)
     {
-        return $request->title;
+        dd($request->title);
     }
 
     public function dataChart()
