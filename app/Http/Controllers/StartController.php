@@ -56,6 +56,11 @@ class StartController extends Controller
 
         return response()->json([$request->all()]);
     }
+
+    public function edit(Request $request){
+        return response()->json([$request->all()]);
+    }
+
     public function dataChart()
     {
         return [

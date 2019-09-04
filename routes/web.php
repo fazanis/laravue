@@ -16,6 +16,7 @@ Route::get('/getjson', 'StartController@getjson');
 Route::get('/getAjaxBilets', 'StartController@getAjaxBilets');
 Route::post('/addBilet', 'StartController@addBilet');
 Route::post('/bilet/remove', 'StartController@remove');
+Route::get('/bilet/edit', 'StartController@edit');
 Route::get('/data-chart', 'StartController@dataChart');
 Route::get('/random-chart', 'StartController@random');
 

@@ -1808,6 +1808,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1843,6 +1864,10 @@ __webpack_require__.r(__webpack_exports__);
         text: this.text
       }).then(function (response) {
         _this2.update();
+
+        _this2.title = '';
+        _this2.discription = '';
+        _this2.text = '';
       });
     },
     remove: function remove(id) {
@@ -1854,6 +1879,13 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this3.update();
+      });
+    },
+    edit: function edit(id) {
+      axios.get('/bilet/edit', {
+        id: id
+      }).then(function (response) {
+        console.log(response);
       });
     }
   }
@@ -70013,77 +70045,102 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.title,
-              expression: "title"
-            }
-          ],
-          attrs: { type: "text", name: "title" },
-          domProps: { value: _vm.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.title = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.discription,
-              expression: "discription"
-            }
-          ],
-          attrs: { type: "text", name: "discription" },
-          domProps: { value: _vm.discription },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.discription = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.text,
-              expression: "text"
-            }
-          ],
-          attrs: { type: "text", name: "text" },
-          domProps: { value: _vm.text },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.text = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-info", on: { click: _vm.addData } },
-          [_vm._v("Добавить")]
-        ),
+        _c("div", { attrs: { id: "accordion" } }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse",
+                attrs: {
+                  id: "collapseTwo",
+                  "aria-labelledby": "headingTwo",
+                  "data-parent": "#accordion"
+                }
+              },
+              [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.title,
+                        expression: "title"
+                      }
+                    ],
+                    attrs: { type: "text", name: "title" },
+                    domProps: { value: _vm.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.title = $event.target.value
+                      }
+                    }
+                  }),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.discription,
+                        expression: "discription"
+                      }
+                    ],
+                    attrs: { type: "text", name: "discription" },
+                    domProps: { value: _vm.discription },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.discription = $event.target.value
+                      }
+                    }
+                  }),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.text,
+                        expression: "text"
+                      }
+                    ],
+                    attrs: { type: "text", name: "text" },
+                    domProps: { value: _vm.text },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.text = $event.target.value
+                      }
+                    }
+                  }),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "btn btn-info", on: { click: _vm.addData } },
+                    [_vm._v("Добавить")]
+                  ),
+                  _c("br")
+                ])
+              ]
+            )
+          ])
+        ]),
         _vm._v(" "),
         _c("table", { staticClass: "table table" }, [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "tbody",
@@ -70093,11 +70150,26 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(url.title))]),
                 _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(url.discription))]),
+                _vm._v(" "),
                 _c("td", [
                   _c(
-                    "a",
+                    "button",
                     {
-                      attrs: { href: "#" },
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function($event) {
+                          return _vm.edit(url.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Редактировать")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
                       on: {
                         click: function($event) {
                           return _vm.remove(url.id)
@@ -70121,11 +70193,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header", attrs: { id: "headingTwo" } },
+      [
+        _c("h5", { staticClass: "mb-0" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link collapsed",
+              attrs: {
+                "data-toggle": "collapse",
+                "data-target": "#collapseTwo",
+                "aria-expanded": "false",
+                "aria-controls": "collapseTwo"
+              }
+            },
+            [
+              _vm._v(
+                "\n                                Форма ввода\n                            "
+              )
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-inverse" }, [
       _c("tr", [
         _c("th", [_vm._v("id")]),
         _vm._v(" "),
         _c("th", [_vm._v("заголовок")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Описание")]),
         _vm._v(" "),
         _c("th", [_vm._v("Действие")])
       ])
