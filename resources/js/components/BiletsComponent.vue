@@ -4,21 +4,25 @@
             <div class="col-md-12">
                 <button @click="update" class="btn btn-info" v-if="!is_refresh">Обновить</button>
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
-                    <input type="text" name="title" id="title">
-                    <input type="text" name="discription" id="discription">
-                    <input type="text" name="text" id="text">
+                    <input type="text" name="title" v-model="title">
+                    <input type="text" name="discription" v-model="discription">
+                    <input type="text" name="text" v-model="text">
                     <button @click="addData"  class="btn btn-info" >Добавить</button>
-               <table class="table">
+               <table class="table table">
+                   <thead class="thead-inverse">
                    <tr>
                        <th>id</th>
                        <th>заголовок</th>
-                       <th>Описание</th>
+                       <th>Действие</th>
                    </tr>
+                   </thead>
+                   <tbody>
                    <tr v-for="url in urldata">
                         <td>{{url.id}}</td>
                         <td>{{url.title}}</td>
-                        <td>{{url.discription}}</td>
+                       <td><a href="#" @click="remove(url.id)">Удалить</a> </td>
                    </tr>
+                   </tbody>
                </table>
             </div>
         </div>
@@ -31,7 +35,7 @@
             return{
                 urldata:[],
                 is_refresh: false,
-                id:0,
+                id:'',
                 title:'',
                 discription: '',
                 text: ''
@@ -50,19 +54,21 @@
                 });
             },
             addData: function () {
-                // axios({
-                //     method: 'post',
-                //     url: '/addBilet',
-                //     data: title=this.title,
-                //     discription=this.discription,
-                //     text=this.text
-                //     config: { headers: {'Content-Type': 'multipart/form-data' }}
-                // }).then((response)=>{
-                //     console.log(response);
-                // });
-                axios.post('/addBilet').then(function (response) {
-                    app.countries = response.data;
-                    console.log(app.countries);
+                // alert(this.title);
+                axios.post('/addBilet',{
+                    title:this.title,
+                    discription:this.discription,
+                    text:this.text
+                }).then((response)=>{
+                    this.update();
+                });
+            },
+            remove: function(id){
+                axios.post('/bilet/remove',{
+                    id:id
+                }).then((response)=>{
+                    console.log(response);
+                    this.update();
                 });
             }
         }

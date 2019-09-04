@@ -1804,12 +1804,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       urldata: [],
       is_refresh: false,
-      id: 0,
+      id: '',
       title: '',
       discription: '',
       text: ''
@@ -1830,12 +1834,26 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addData: function addData() {
+      var _this2 = this;
+
+      // alert(this.title);
       axios.post('/addBilet', {
         title: this.title,
         discription: this.discription,
         text: this.text
       }).then(function (response) {
+        _this2.update();
+      });
+    },
+    remove: function remove(id) {
+      var _this3 = this;
+
+      axios.post('/bilet/remove', {
+        id: id
+      }).then(function (response) {
         console.log(response);
+
+        _this3.update();
       });
     }
   }
@@ -69995,13 +70013,68 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("input", { attrs: { type: "text", name: "title", id: "title" } }),
-        _vm._v(" "),
         _c("input", {
-          attrs: { type: "text", name: "discription", id: "discription" }
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.title,
+              expression: "title"
+            }
+          ],
+          attrs: { type: "text", name: "title" },
+          domProps: { value: _vm.title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.title = $event.target.value
+            }
+          }
         }),
         _vm._v(" "),
-        _c("input", { attrs: { type: "text", name: "text", id: "text" } }),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.discription,
+              expression: "discription"
+            }
+          ],
+          attrs: { type: "text", name: "discription" },
+          domProps: { value: _vm.discription },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.discription = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.text,
+              expression: "text"
+            }
+          ],
+          attrs: { type: "text", name: "text" },
+          domProps: { value: _vm.text },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.text = $event.target.value
+            }
+          }
+        }),
         _vm._v(" "),
         _c(
           "button",
@@ -70009,24 +70082,36 @@ var render = function() {
           [_vm._v("Добавить")]
         ),
         _vm._v(" "),
-        _c(
-          "table",
-          { staticClass: "table" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
+        _c("table", { staticClass: "table table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
             _vm._l(_vm.urldata, function(url) {
               return _c("tr", [
                 _c("td", [_vm._v(_vm._s(url.id))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(url.title))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(url.discription))])
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          return _vm.remove(url.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Удалить")]
+                  )
+                ])
               ])
-            })
-          ],
-          2
-        )
+            }),
+            0
+          )
+        ])
       ])
     ])
   ])
@@ -70036,12 +70121,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("id")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("заголовок")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Описание")])
+    return _c("thead", { staticClass: "thead-inverse" }, [
+      _c("tr", [
+        _c("th", [_vm._v("id")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("заголовок")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Действие")])
+      ])
     ])
   }
 ]

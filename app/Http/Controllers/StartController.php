@@ -36,14 +36,26 @@ class StartController extends Controller
 
     public function getAjaxBilets()
     {
-        return json_encode(Bilets::all());
+        return json_encode(Bilets::orderBy('id', 'desc')->get());
     }
 
     public function addBilet(Request $request)
     {
-        dd($request->title);
+
+        $bilet = new Bilets();
+        $bilet->title = $request->title;
+        $bilet->discription = $request->discription;
+        $bilet->text = $request->text;
+        $bilet->save();
+        return response()->json([$request->all()]);
     }
 
+    public function remove(Request $request){
+        $remove = Bilets::find($request->id);
+        $remove->delete();
+
+        return response()->json([$request->all()]);
+    }
     public function dataChart()
     {
         return [

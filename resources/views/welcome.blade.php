@@ -87,13 +87,13 @@
                     Laravel + vue
                 </div>
                 <div class="tabs">
-                    <input id="tab1" type="radio" name="tabs" checked>
+                    <input id="tab1" type="radio" name="tabs">
                     <label for="tab1" title="Вкладка 1">1</label>
 
                     <input id="tab2" type="radio" name="tabs">
                     <label for="tab2" title="Вкладка 2">Ajax</label>
 
-                    <input id="tab3" type="radio" name="tabs">
+                    <input id="tab3" type="radio" name="tabs" checked>
                     <label for="tab3" title="Вкладка 3">Билеты</label>
 
                     <input id="tab4" type="radio" name="tabs">
@@ -143,8 +143,8 @@
     <style>
         /* Базовый контейнер табов */
         .tabs {
-            min-width: 320px;
-            max-width: 800px;
+            /*min-width: 320px;*/
+            /*max-width: 800px;*/
             padding: 0px;
             margin: 0 auto;
         }
