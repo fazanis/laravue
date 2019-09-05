@@ -94,7 +94,7 @@
                     <input id="tab2" type="radio" name="tabs">
                     <label for="tab2" title="Вкладка 2">Ajax</label>
 
-                    <input id="tab3" type="radio" name="tabs" checked>
+                    <input id="tab3" type="radio" name="tabs">
                     <label for="tab3" title="Вкладка 3">Билеты</label>
 
                     <input id="tab4" type="radio" name="tabs">
@@ -105,6 +105,9 @@
 
                     <input id="tab6" type="radio" name="tabs">
                     <label for="tab6" title="Вкладка 6">Изменяемая</label>
+
+                    <input id="tab7" type="radio" name="tabs" checked>
+                    <label for="tab7" title="Вкладка 7">AJAX LOAD</label>
 
                     <section id="content-tab1">
                         <p>
@@ -135,6 +138,11 @@
                     <section id="content-tab6">
                         <p>
                             <chartlineupdate-component></chartlineupdate-component>
+                        </p>
+                    </section>
+                    <section id="content-tab7">
+                        <p>
+                            <ajaxload-component></ajaxload-component>
                         </p>
                     </section>
                 </div>
@@ -240,7 +248,7 @@
         }
         /* Активация секций с помощью псевдокласса :checked */
         #tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4
-        ,#tab5:checked~#content-tab5,#tab6:checked~#content-tab6{
+        ,#tab5:checked~#content-tab5,#tab6:checked~#content-tab6, #tab7:checked~#content-tab7 {
             display: block;
         }
         /* Убираем текст с переключателей

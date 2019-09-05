@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bilets;
+use App\Posts;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -98,5 +99,10 @@ class StartController extends Controller
                     'data' => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000)],
                 ])
         ];
+    }
+
+    public function getPosts(){
+        $posts = Posts::take(10)->get();
+        return response()->json($posts);
     }
 }
