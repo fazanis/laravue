@@ -2145,6 +2145,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2188,7 +2192,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
 
-    document.addEventListener('scroll', eventHandler);
+    var delayedHandler = _.debounce(eventHandler, 400);
+
+    document.addEventListener('scroll', delayedHandler);
   }
 });
 
@@ -70604,7 +70610,26 @@ var render = function() {
           )
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.loading,
+            expression: "loading"
+          }
+        ]
+      },
+      [
+        _c("span", { staticClass: "text-3xl font-bold" }, [
+          _vm._v("Loading...")
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [

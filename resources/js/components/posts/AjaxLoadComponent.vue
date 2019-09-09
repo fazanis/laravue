@@ -24,6 +24,10 @@
                </table>
             </div>
         </div>
+
+        <div v-show="loading">
+            <span class="text-3xl font-bold">Loading...</span>
+        </div>
     </div>
 </template>
 
@@ -66,7 +70,8 @@
                 }
 
             }
-            document.addEventListener('scroll', eventHandler)
+            let delayedHandler = _.debounce(eventHandler, 400)
+            document.addEventListener('scroll', delayedHandler)
         }
     }
 </script>
