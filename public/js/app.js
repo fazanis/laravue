@@ -2186,11 +2186,9 @@ __webpack_require__.r(__webpack_exports__);
       if (atTheBottom) {
         _this2.getPosts(_this2.posts.length);
       }
-
-      var delayedHandler = _.debounce(eventHandler, 400);
     };
 
-    document.addEventListener('scroll', delayedHandler);
+    document.addEventListener('scroll', eventHandler);
   }
 });
 
@@ -70580,14 +70578,6 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        !_vm.is_refresh
-          ? _c(
-              "button",
-              { staticClass: "btn btn-info", on: { click: _vm.getPosts } },
-              [_vm._v("Обновить")]
-            )
-          : _vm._e(),
-        _vm._v(" "),
         _vm.is_refresh
           ? _c("span", { staticClass: "badge badge-primary mb-1" }, [
               _vm._v("Обновление")
@@ -83419,15 +83409,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************!*\
   !*** ./resources/js/components/posts/AjaxLoadComponent.vue ***!
   \*************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AjaxLoadComponent_vue_vue_type_template_id_4e7b9f20___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AjaxLoadComponent.vue?vue&type=template&id=4e7b9f20& */ "./resources/js/components/posts/AjaxLoadComponent.vue?vue&type=template&id=4e7b9f20&");
 /* harmony import */ var _AjaxLoadComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AjaxLoadComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/posts/AjaxLoadComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AjaxLoadComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AjaxLoadComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -83457,7 +83446,7 @@ component.options.__file = "resources/js/components/posts/AjaxLoadComponent.vue"
 /*!**************************************************************************************!*\
   !*** ./resources/js/components/posts/AjaxLoadComponent.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

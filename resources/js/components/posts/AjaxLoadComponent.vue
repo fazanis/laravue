@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <button @click="getPosts" class="btn btn-info" v-if="!is_refresh">Обновить</button>
+<!--                <button @click="getPosts" class="btn btn-info" v-if="!is_refresh">Обновить</button>-->
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
                <table class="table table">
                    <thead class="thead-inverse">
