@@ -10,8 +10,8 @@
                        <th>URL</th>
                    </tr>
                    <tr v-for="url in urldata">
-                        <td>{{url.name}}</td>
-                        <td>{{url.email}}</td>
+                        <td>{{url.title}}</td>
+                        <td>{{url.text}}</td>
                    </tr>
                </table>
             </div>

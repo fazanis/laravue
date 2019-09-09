@@ -32,7 +32,7 @@ class StartController extends Controller
 
     public function getjson()
     {
-        return json_encode(User::all());
+        return json_encode(Posts::where('status',1)->get());
     }
 
     public function getAjaxBilets()
@@ -100,9 +100,9 @@ class StartController extends Controller
                 ])
         ];
     }
-
-    public function getPosts(){
-        $posts = Posts::take(10)->get();
+    //посты
+    public function getPosts(Request $request){
+        $posts = Posts::offset($request->get('offset'))->take(10)->get();
         return response()->json($posts);
     }
 }

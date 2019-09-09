@@ -18,7 +18,7 @@
                        <td>{{post.id}}</td>
                        <td>{{post.title}}</td>
                        <td>{{post.text}}</td>
-                       <td> <button> {{param}} </button></td>
+                       <td> <button></button></td>
                    </tr>
                    </tbody>
                </table>
@@ -33,20 +33,40 @@
             return{
                 posts:[],
                 is_refresh: false,
-                name:'',
                 class: ''
             }
         },
         mounted() {
-            this.getPosts();
+            // this.getPosts();
         },
         methods:{
-            getPosts: function () {
-                axios.get('/getposts').then((response)=>{
+            getPosts: function (offset=0) {
+                axios.get('/getposts',{
+                    params:{
+                        offset:offset
+                    }
+                }).then((response)=>{
                     console.log(response.data);
-                    this.posts = response.data;
+                    this.posts = this.posts.concat(response.data);
                 });
             }
+        },
+        created() {
+            this.getPosts();
+            const eventHandler = () => {
+                // const atTheBottom = false
+                const scrollTop = document.documentElement.scrollTop;
+                const viewportHeight = window.innerHeight;
+                const totalHeight = document.documentElement.offsetHeight;
+                const atTheBottom = scrollTop + viewportHeight == totalHeight;
+                console.log(atTheBottom);
+                if (atTheBottom)
+                {
+                    this.getPosts(this.posts.length);
+                }
+
+            }
+            document.addEventListener('scroll', eventHandler)
         }
     }
 </script>
