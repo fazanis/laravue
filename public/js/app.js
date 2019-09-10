@@ -2154,7 +2154,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       posts: [],
       is_refresh: false,
-      "class": ''
+      "class": '',
+      loading: false
     };
   },
   mounted: function mounted() {// this.getPosts();
@@ -2164,6 +2165,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      this.loading = true;
       axios.get('/getposts', {
         params: {
           offset: offset
@@ -2171,6 +2173,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         console.log(response.data);
         _this.posts = _this.posts.concat(response.data);
+      })["finally"](function (response) {
+        return _this.loading = false;
       });
     }
   },
@@ -70603,7 +70607,16 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(post.text))]),
                 _vm._v(" "),
-                _vm._m(1, true)
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info",
+                      on: { click: _vm.getPosts }
+                    },
+                    [_vm._v("Активировать")]
+                  )
+                ])
               ])
             }),
             0
@@ -70648,12 +70661,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Статус")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("button")])
   }
 ]
 render._withStripped = true

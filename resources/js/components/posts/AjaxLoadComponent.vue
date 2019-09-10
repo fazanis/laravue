@@ -18,7 +18,7 @@
                        <td>{{post.id}}</td>
                        <td>{{post.title}}</td>
                        <td>{{post.text}}</td>
-                       <td> <button></button></td>
+                       <td> <button class="btn btn-info" @click="getPosts">Активировать</button></td>
                    </tr>
                    </tbody>
                </table>
@@ -37,7 +37,8 @@
             return{
                 posts:[],
                 is_refresh: false,
-                class: ''
+                class: '',
+                loading: false
             }
         },
         mounted() {
@@ -45,6 +46,7 @@
         },
         methods:{
             getPosts: function (offset=0) {
+                this.loading = true;
                 axios.get('/getposts',{
                     params:{
                         offset:offset
@@ -52,7 +54,8 @@
                 }).then((response)=>{
                     console.log(response.data);
                     this.posts = this.posts.concat(response.data);
-                });
+                })
+                    .finally(response => this.loading = false)
             }
         },
         created() {
