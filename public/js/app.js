@@ -2149,6 +2149,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2171,34 +2176,33 @@ __webpack_require__.r(__webpack_exports__);
           offset: offset
         }
       }).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         _this.posts = _this.posts.concat(response.data);
       })["finally"](function (response) {
         return _this.loading = false;
       });
+    },
+    activate: function activate(id, status) {
+      var _this2 = this;
+
+      var param;
+
+      if (status == 1) {
+        param = 0;
+      } else {
+        param = 1;
+      }
+
+      axios.post('/activate', {
+        id: id,
+        param: param
+      }).then(function (response) {
+        _this2.getPosts();
+      });
     }
   },
   created: function created() {
-    var _this2 = this;
-
     this.getPosts();
-
-    var eventHandler = function eventHandler() {
-      // const atTheBottom = false
-      var scrollTop = document.documentElement.scrollTop;
-      var viewportHeight = window.innerHeight;
-      var totalHeight = document.documentElement.offsetHeight;
-      var atTheBottom = scrollTop + viewportHeight == totalHeight;
-      console.log(atTheBottom);
-
-      if (atTheBottom) {
-        _this2.getPosts(_this2.posts.length);
-      }
-    };
-
-    var delayedHandler = _.debounce(eventHandler, 400);
-
-    document.addEventListener('scroll', delayedHandler);
   }
 });
 
@@ -70587,42 +70591,86 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _vm.is_refresh
-          ? _c("span", { staticClass: "badge badge-primary mb-1" }, [
-              _vm._v("Обновление")
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("table", { staticClass: "table table" }, [
-          _vm._m(0),
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
+          _vm.is_refresh
+            ? _c("span", { staticClass: "badge badge-primary mb-1" }, [
+                _vm._v("Обновление")
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
-            "tbody",
-            _vm._l(_vm.posts, function(post) {
-              return _c("tr", [
-                _c("td", [_vm._v(_vm._s(post.id))]),
+            "scrollable",
+            {
+              on: {
+                "at-the-bottom": function($event) {
+                  return _vm.getPosts(_vm.posts.length)
+                }
+              }
+            },
+            [
+              _c("table", { staticClass: "table table" }, [
+                _c("thead", { staticClass: "thead-inverse" }, [
+                  _c("tr", [
+                    _c("th", [_vm._v("id")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("заголовок")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Описание")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Статус")])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(post.title))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(post.text))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-info",
-                      on: { click: _vm.getPosts }
-                    },
-                    [_vm._v("Активировать")]
-                  )
-                ])
+                _c(
+                  "tbody",
+                  _vm._l(_vm.posts, function(post) {
+                    return _c("tr", [
+                      _c("td", [_vm._v(_vm._s(post.id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(post.title))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(post.text))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        post.status == 0
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-info",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.activate(post.id, post.status)
+                                  }
+                                }
+                              },
+                              [_vm._v("Активировать")]
+                            )
+                          : _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-error",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.activate(post.id, post.status)
+                                  }
+                                }
+                              },
+                              [_vm._v("Деактивировать")]
+                            )
+                      ])
+                    ])
+                  }),
+                  0
+                )
               ])
-            }),
-            0
+            ]
           )
-        ])
-      ])
+        ],
+        1
+      )
     ]),
     _vm._v(" "),
     _c(
@@ -70645,24 +70693,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-inverse" }, [
-      _c("tr", [
-        _c("th", [_vm._v("id")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("заголовок")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Описание")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Статус")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

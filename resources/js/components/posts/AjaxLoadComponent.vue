@@ -4,6 +4,7 @@
             <div class="col-md-12">
 <!--                <button @click="getPosts" class="btn btn-info" v-if="!is_refresh">Обновить</button>-->
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
+                <scrollable @at-the-bottom="getPosts(posts.length)">
                <table class="table table">
                    <thead class="thead-inverse">
                    <tr>
@@ -18,10 +19,14 @@
                        <td>{{post.id}}</td>
                        <td>{{post.title}}</td>
                        <td>{{post.text}}</td>
-                       <td> <button class="btn btn-info" @click="getPosts">Активировать</button></td>
+                       <td>
+                           <button v-if="post.status==0" class="btn btn-info" @click="activate(post.id,post.status)">Активировать</button>
+                           <button v-else class="btn btn-error" @click="activate(post.id,post.status)">Деактивировать</button>
+                       </td>
                    </tr>
                    </tbody>
                </table>
+                </scrollable>
             </div>
         </div>
 
@@ -52,29 +57,23 @@
                         offset:offset
                     }
                 }).then((response)=>{
-                    console.log(response.data);
+                    // console.log(response.data);
                     this.posts = this.posts.concat(response.data);
                 })
                     .finally(response => this.loading = false)
+            },
+            activate: function (id,status) {
+                var param;
+                if (status==1){param=0}else{param=1}
+                axios.post('/activate',{
+                    id:id,param:param
+                }).then((response)=>{
+                    this.getPosts()
+                })
             }
         },
         created() {
             this.getPosts();
-            const eventHandler = () => {
-                // const atTheBottom = false
-                const scrollTop = document.documentElement.scrollTop;
-                const viewportHeight = window.innerHeight;
-                const totalHeight = document.documentElement.offsetHeight;
-                const atTheBottom = scrollTop + viewportHeight == totalHeight;
-                console.log(atTheBottom);
-                if (atTheBottom)
-                {
-                    this.getPosts(this.posts.length);
-                }
-
-            }
-            let delayedHandler = _.debounce(eventHandler, 400)
-            document.addEventListener('scroll', delayedHandler)
         }
     }
 </script>

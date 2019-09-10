@@ -20,4 +20,5 @@ Route::get('/bilet/edit', 'StartController@edit');
 Route::get('/data-chart', 'StartController@dataChart');
 Route::get('/random-chart', 'StartController@random');
 Route::get('/getposts', 'StartController@getPosts');
+Route::post('/activate', 'StartController@activate');
 

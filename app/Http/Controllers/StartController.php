@@ -105,4 +105,10 @@ class StartController extends Controller
         $posts = Posts::offset($request->get('offset'))->take(10)->get();
         return response()->json($posts);
     }
+
+    public function activate(Request $request)
+    {
+        return Posts::where('id',$request->id)->update(['status'=>$request->param]);
+//        return $request->all();
+    }
 }
