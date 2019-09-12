@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'StartController@index');
 Route::get('/getjson', 'StartController@getjson');
+Route::get('/admin/settings', 'StartController@getjson2');
 Route::get('/getAjaxBilets', 'StartController@getAjaxBilets');
 Route::post('/addBilet', 'StartController@addBilet');
 Route::post('/bilet/remove', 'StartController@remove');
@@ -22,3 +22,7 @@ Route::get('/random-chart', 'StartController@random');
 Route::get('/getposts', 'StartController@getPosts');
 Route::post('/activate', 'StartController@activate');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

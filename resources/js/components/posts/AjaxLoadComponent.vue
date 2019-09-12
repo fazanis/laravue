@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
 <!--                <button @click="getPosts" class="btn btn-info" v-if="!is_refresh">Обновить</button>-->
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
                 <scrollable @at-the-bottom="getPosts(posts.length)">
@@ -37,6 +37,9 @@
 </template>
 
 <script>
+
+    import Scrollable from './Scrolable.vue'
+
     export default {
         data: function(){
             return{
@@ -46,8 +49,9 @@
                 loading: false
             }
         },
+        components: {Scrollable},
         mounted() {
-            // this.getPosts();
+            this.getPosts();
         },
         methods:{
             getPosts: function (offset=0) {
@@ -68,7 +72,7 @@
                 axios.post('/activate',{
                     id:id,param:param
                 }).then((response)=>{
-                    this.getPosts()
+
                 })
             }
         },

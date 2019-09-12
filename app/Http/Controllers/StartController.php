@@ -35,6 +35,11 @@ class StartController extends Controller
         return json_encode(Posts::where('status',1)->get());
     }
 
+    public function getjson2()
+    {
+        return view('admin.index');
+    }
+
     public function getAjaxBilets()
     {
         return json_encode(Bilets::orderBy('id', 'desc')->get());
