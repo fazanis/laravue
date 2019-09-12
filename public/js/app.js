@@ -1749,7 +1749,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log('fdfsdf');
     this.update();
   },
   methods: {
@@ -70107,7 +70106,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "col-md-9" }, [
         !_vm.is_refresh
           ? _c(
               "button",

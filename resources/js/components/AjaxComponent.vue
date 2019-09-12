@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <button @click="update" class="btn btn-info" v-if="!is_refresh">Обновить - {{id}}</button>
                 <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление</span>
                <table class="table">
@@ -29,7 +29,6 @@
             }
         },
         mounted() {
-            console.log('fdfsdf');
             this.update()
         },
         methods:{
