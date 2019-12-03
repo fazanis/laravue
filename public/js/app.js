@@ -1740,6 +1740,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1757,7 +1769,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.is_refresh = true;
       axios.get('/getjson').then(function (response) {
-        console.log(response);
         _this.urldata = response.data;
         _this.is_refresh = false;
         _this.id++;
@@ -70104,39 +70115,51 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("section", { staticClass: "content" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-9" }, [
-        !_vm.is_refresh
-          ? _c(
-              "button",
-              { staticClass: "btn btn-info", on: { click: _vm.update } },
-              [_vm._v("Обновить - " + _vm._s(_vm.id))]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.is_refresh
-          ? _c("span", { staticClass: "badge badge-primary mb-1" }, [
-              _vm._v("Обновление")
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "table",
-          { staticClass: "table" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.urldata, function(url) {
-              return _c("tr", [
-                _c("td", [_vm._v(_vm._s(url.title))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(url.text))])
+      _c("div", { staticClass: "col-xs-12" }, [
+        _c("div", { staticClass: "box" }, [
+          !_vm.is_refresh
+            ? _c(
+                "button",
+                { staticClass: "btn btn-info", on: { click: _vm.update } },
+                [_vm._v("Обновить - " + _vm._s(_vm.id))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.is_refresh
+            ? _c("span", { staticClass: "badge badge-primary mb-1" }, [
+                _vm._v("Обновление")
               ])
-            })
-          ],
-          2
-        )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "box-body" }, [
+            _c(
+              "table",
+              {
+                staticClass: "table table-bordered table-hover",
+                attrs: { id: "example2" }
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.urldata, function(url) {
+                    return _c("tr", [
+                      _c("td", [_vm._v(_vm._s(url.title))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(url.text))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(url.id))])
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -70146,10 +70169,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Наименование")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("URL")])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Наименование2")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("URL")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Действие")])
+      ])
     ])
   }
 ]
@@ -82909,9 +82936,13 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -82920,6 +82951,7 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
